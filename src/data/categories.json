@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "title": "Cafés",
+        "image": "https://www.radioimagina.cl/wp-content/uploads/2013/05/cafe.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Pastelería",
+        "image": "https://tse1.mm.bing.net/th/id/OIP.jCupIpIlIAhYQtycqSoOUAHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+    },
+    {
+        "id": 3,
+        "title": "Postres",
+        "image": "https://3.bp.blogspot.com/-v0xTEGpnDGc/VAS-nvdvbpI/AAAAAAACTCc/6kz4lu8v--U/s1600/im%C3%A1genes%2By%2Bfotos%2Bde%2Bpostres%2Bcomo%2Bpasteles%2C%2Bpanqu%C3%A9%2By%2Bpay%2Bde%2Bqueso%2B(7).jpg"
+    },
+    {
+        "id": 4,
+        "title": "Salados",
+        "image": "https://images.hola.com/imagenes/cocina/noticiaslibros/20220906216483/tostadas-desayuno-saladas-recetas-saludables/1-133-219/tostadas-saladas-adob-1-a.jpg"
+    },
+    {
+        "id": 5,
+        "title": "Bebidas frías",
+        "image": "https://cdn2.cocinadelirante.com/sites/default/files/images/2020/03/recetas-de-bebidas-frias-para-primavera.jpg"
+    },
+    {
+        "id": 6,
+        "title": "Tés e infusiones",
+        "image": "https://www.nestleprofessional.es/sites/default/files/styles/np_article_big/public/2023-09/cafes-e-infusiones-para-hosteler.png?itok=LLIZdUkp"
+    }
+]
