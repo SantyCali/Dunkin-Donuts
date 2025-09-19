@@ -1,13 +1,17 @@
 // src/screens/shop/CategoriesScreen.jsx
-import React from "react";
+import React, { useMemo } from "react";
 import { StyleSheet, Text, View, FlatList, Pressable, ImageBackground } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { setCategorySelected } from "../../store/slices/shopSlice";
 import { colors } from "../../global/colors";
 
 const CategoriesScreen = ({ navigation }) => {
+  const insets = useSafeAreaInsets();
   const categories = useSelector(state => state.shopReducer.categories);
   const dispatch = useDispatch();
+
+  const bottomPad = useMemo(() => insets.bottom + 140, [insets.bottom]);
 
   const handleSelectCategory = (category) => {
     dispatch(setCategorySelected(category.title.toLowerCase()));
@@ -33,9 +37,11 @@ const CategoriesScreen = ({ navigation }) => {
     <View style={styles.container}>
       <FlatList
         data={categories}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => String(item.id)}
         renderItem={renderCategoryItem}
-        contentContainerStyle={styles.list}
+        contentContainerStyle={[styles.list, { paddingBottom: bottomPad }]}
+        ListFooterComponent={<View style={{ height: 8 }} />}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
@@ -44,14 +50,8 @@ const CategoriesScreen = ({ navigation }) => {
 export default CategoriesScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-  list: {
-    padding: 16,
-    gap: 16,
-  },
+  container: { flex: 1, backgroundColor: "#fff" },
+  list: { padding: 16, gap: 16 },
   card: {
     height: 160,
     borderRadius: 16,
@@ -62,13 +62,8 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 4 },
   },
-  image: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  imageStyle: {
-    borderRadius: 16,
-  },
+  image: { flex: 1, justifyContent: "center" },
+  imageStyle: { borderRadius: 16 },
   overlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: "rgba(0,0,0,0.35)",

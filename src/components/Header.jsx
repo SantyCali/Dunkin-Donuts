@@ -24,7 +24,7 @@ const Header = ({
         <View style={styles.tint} />
         <SafeAreaView edges={['top']} style={styles.safe}>
           <View style={styles.bar}>
-            {/* Botón atrás 👉 aparece si hay historial */}
+          
             {navigation?.canGoBack() ? (
               <Pressable
                 hitSlop={10}

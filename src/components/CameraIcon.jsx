@@ -1,5 +1,5 @@
 import { StyleSheet, View } from 'react-native'
-import { MaterialIcons } from '@expo/vector-icons'   // 👈 Expo icons
+import { MaterialIcons } from '@expo/vector-icons'  
 import { colors } from '../global/colors'
 
 const CameraIcon = () => {

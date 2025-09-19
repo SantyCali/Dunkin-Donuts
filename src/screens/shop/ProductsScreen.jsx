@@ -19,7 +19,6 @@ import Search from '../../components/Search';
 
 const HERO_IMG = { uri: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1600&auto=format&fit=crop' };
 
-// Blurhash simple como placeholder mientras carga
 const BLURHASH =
   'LGF5]+Yk^6#M@-5c,1J5R*%MRjRj';
 

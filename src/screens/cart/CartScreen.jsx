@@ -93,7 +93,7 @@ const CartScreen = ({ navigation }) => {
         </ImageBackground>
       </View>
 
-      {/* BANNERS (últimos arriba) */}
+      {/* BANNERS */}
       {!!orders.length && (
         <View style={styles.bannersWrap}>
           {([...orders].reverse()).map((o) => <Banner key={o.id} order={o} />)}
@@ -127,7 +127,6 @@ const CartScreen = ({ navigation }) => {
       ListHeaderComponent={ListHeader}
       ListFooterComponent={ListFooter}
       contentContainerStyle={styles.list}
-      // opcional: mejora el rebote visual cuando hay pocos items
       bounces
     />
   )

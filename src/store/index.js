@@ -5,12 +5,12 @@ import userReducer from './slices/userSlice'
 import shopReducer from './slices/shopSlice'
 import cartReducer from './slices/cartSlice'
 import ordersReducer from './slices/ordersSlice'
+import placesReducer from './slices/placesSlice' 
 
 import { shopApi } from '../services/shopApi'
 import { authApi } from '../services/authApi'
 import { profileApi } from '../services/profileApi'
 import { ordersApi } from '../services/ordersApi'
-
 
 export const store = configureStore({
   reducer: {
@@ -18,6 +18,7 @@ export const store = configureStore({
     shopReducer,
     cartReducer,
     ordersReducer,
+    placesReducer,                               
     [shopApi.reducerPath]: shopApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
     [profileApi.reducerPath]: profileApi.reducer,
@@ -30,4 +31,5 @@ export const store = configureStore({
       .concat(profileApi.middleware)
       .concat(ordersApi.middleware),
 })
+
 setupListeners(store.dispatch)

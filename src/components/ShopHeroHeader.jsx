@@ -19,7 +19,6 @@ const ShopHeroHeader = ({ title = "Dunkin Donuts", subtitle = "Home", children }
         </View>
       </ImageBackground>
 
-      {/* slot para Search u otros elementos “flotando” debajo del header */}
       <View style={styles.slot}>{children}</View>
     </View>
   );

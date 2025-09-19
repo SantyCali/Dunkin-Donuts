@@ -20,7 +20,7 @@ const HERO = { uri: 'https://images.unsplash.com/photo-1511920170033-f8396924c34
 
 export default function AuthScreen() {
   const [tab, setTab] = useState('login')
-  const anim = useRef(new Animated.Value(0)).current // 0=login, 1=signup
+  const anim = useRef(new Animated.Value(0)).current
 
   const switchTo = (to) => {
     Animated.timing(anim, { toValue: to === 'signup' ? 1 : 0, duration: 220, useNativeDriver: true }).start()

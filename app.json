@@ -28,6 +28,32 @@
     "plugins": [
       "expo-font",
       "expo-sqlite"
-    ]
+    ],
+
+  "expo": {
+    "plugins": [
+      ["expo-image-picker", {
+        "photosPermission": "Necesitamos acceder a tus fotos para que elijas una imagen.",
+        "cameraPermission": "Necesitamos acceder a la cámara para tomar fotos."
+      }]
+    ],
+    "ios": {
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "Necesitamos acceder a tus fotos para que elijas una imagen.",
+        "NSCameraUsageDescription": "Necesitamos acceder a la cámara para tomar fotos."
+      }
+    },
+    "android": {
+      "permissions": [
+        "READ_MEDIA_IMAGES",           
+        "READ_EXTERNAL_STORAGE",       
+        "CAMERA"
+      ]
+    }
   }
+
+
+    
+  }
+  
 }

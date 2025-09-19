@@ -1,5 +1,5 @@
 // src/screens/profile/ProfileScreen.jsx
-import { StyleSheet, Text, View, Pressable, Image, ActivityIndicator, ImageBackground } from 'react-native'
+import { StyleSheet, Text, View, Pressable, Image, ActivityIndicator, ImageBackground, ScrollView } from 'react-native'
 import { colors } from '../../global/colors'
 import CameraIcon from '../../components/CameraIcon'
 import { useState, useEffect } from 'react'
@@ -13,6 +13,8 @@ import { Feather } from '@expo/vector-icons'
 
 const HERO =
   'https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1600&auto=format&fit=crop'
+
+const AVATAR = 128
 
 const ProfileScreen = () => {
   const [location, setLocation] = useState(null)
@@ -60,13 +62,17 @@ const ProfileScreen = () => {
   }, [])
 
   return (
-    <View style={styles.screen}>
+    <ScrollView
+      style={styles.screen}
+      contentContainerStyle={styles.scrollContent}
+      showsVerticalScrollIndicator={false}
+    >
       {/* HERO */}
       <ImageBackground source={{ uri: HERO }} style={styles.hero} imageStyle={styles.heroImg}>
         <View style={styles.heroTint} />
-        <Text style={styles.brand}>Dunkin' Donuts</Text>
+        <Text style={styles.brand}>Dunkin Donuts</Text>
 
-        {/* Avatar + email (centrados y flotando) */}
+        {/* Avatar + email */}
         <View style={styles.avatarWrap}>
           <View style={styles.avatarCircle}>
             {image ? (
@@ -85,7 +91,7 @@ const ProfileScreen = () => {
         </View>
       </ImageBackground>
 
-      {/* CARD Ubicación */}
+      {/* CARD Ubicacion */}
       <View style={styles.card}>
         <View style={styles.row}>
           <View style={styles.rowLeft}>
@@ -126,22 +132,25 @@ const ProfileScreen = () => {
           )}
         </View>
       </View>
-    </View>
+
+      <View style={{ height: 80 }} />
+    </ScrollView>
   )
 }
 
 export default ProfileScreen
 
-const AVATAR = 128
-
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: '#fff5ef' },
+  scrollContent: {
+    paddingBottom: 140,
+  },
 
   hero: {
     height: 280,
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingBottom: 142, // espacio para el brand y que no choque con el avatar
+    paddingBottom: 142,
   },
   heroImg: { resizeMode: 'cover' },
   heroTint: { ...StyleSheet.absoluteFillObject, backgroundColor: colors.orange, opacity: 0.42 },
@@ -156,10 +165,9 @@ const styles = StyleSheet.create({
     fontFamily: 'Pacifico-Regular',
   },
 
-  // avatar centrado y flotando, con el email bien colocado
   avatarWrap: {
     position: 'absolute',
-    bottom: -AVATAR / 2 - 16, // mitad del avatar + margen
+    bottom: -AVATAR / 2 - 16,
     alignSelf: 'center',
     alignItems: 'center',
     zIndex: 10,
@@ -208,10 +216,10 @@ const styles = StyleSheet.create({
   },
   emailText: { color: '#2b2b2b', fontWeight: '700' },
 
-  // tarjeta ubicación
   card: {
-    marginTop: AVATAR / 2 + 28, // deja espacio bajo el avatar
+    marginTop: AVATAR / 2 + 28,
     marginHorizontal: 16,
+    marginBottom: 32,
     backgroundColor: '#fff',
     borderRadius: 16,
     padding: 16,
@@ -228,7 +236,7 @@ const styles = StyleSheet.create({
   rowValue: { flex: 1, textAlign: 'right', color: '#444', fontWeight: '600' },
 
   mapBox: {
-    height: 220,
+    height: 240,
     borderRadius: 14,
     overflow: 'hidden',
     backgroundColor: '#f4f1ef',

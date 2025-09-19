@@ -19,7 +19,7 @@ const OrderTicketScreen = () => {
       <FlatList
         data={[...orders].reverse()}
         keyExtractor={(o) => o.id}
-        contentContainerStyle={{ gap: 12, paddingBottom: 16 }}
+        contentContainerStyle={{ gap: 16, paddingBottom: 80 }} 
         renderItem={({ item: order }) => (
           <View style={styles.card}>
             <Text style={styles.title}>Ticket</Text>
@@ -30,6 +30,7 @@ const OrderTicketScreen = () => {
             <FlatList
               data={order.items}
               keyExtractor={(it) => String(it.id)}
+              scrollEnabled={false} 
               renderItem={({ item }) => (
                 <View style={styles.row}>
                   <Text style={styles.itemTitle} numberOfLines={1}>{item.title}</Text>

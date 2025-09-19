@@ -13,6 +13,7 @@ import { colors } from '../../global/colors';
 import { useSelector, useDispatch } from 'react-redux';
 import { addItemTocart } from '../../store/slices/cartSlice';
 import Toast from 'react-native-toast-message';
+import { useNavigation } from '@react-navigation/native';
 
 const HERO_IMG = {
   uri: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1600&auto=format&fit=crop',
@@ -21,6 +22,7 @@ const HERO_IMG = {
 const ProductScreen = () => {
   const product = useSelector(state => state.shopReducer.productSelected);
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   if (!product) return null;
 
@@ -29,13 +31,17 @@ const ProductScreen = () => {
     Toast.show({
       type: 'success',
       text1: '🛒 Añadido',
-      text2: product.title,
+      text2: `${product.title} — tocar para ver el carrito`,
+      onPress: () => {
+        Toast.hide();               
+        navigation.navigate('CartTab'); 
+      },
     });
   };
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={{ paddingBottom: 28 }}>
-      {/* HERO con curva y overlay */}
+      {/* HERO */}
       <View style={styles.heroBox}>
         <ImageBackground source={HERO_IMG} style={styles.hero} imageStyle={styles.heroImg}>
           <View style={styles.heroOverlay} />
@@ -72,8 +78,6 @@ export default ProductScreen;
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: '#f2efed' },
-
-  /* HERO */
   heroBox: { paddingBottom: 40, backgroundColor: 'transparent' },
   hero: { height: 140, justifyContent: 'flex-end' },
   heroImg: { borderBottomLeftRadius: 26, borderBottomRightRadius: 26 },
@@ -83,8 +87,6 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 26,
     borderBottomRightRadius: 26,
   },
-
-  /* CARD */
   card: {
     marginHorizontal: 16,
     backgroundColor: '#fffaf7',
@@ -114,7 +116,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 6 },
   },
   circleImg: { width: '100%', height: '100%' },
-
   brand: { color: '#7a7a7a', marginTop: 60, marginBottom: 6 },
   title: { fontSize: 18, fontWeight: '700', color: colors.orange, marginBottom: 10, textAlign: 'center' },
   description: { fontSize: 14, color: '#333', textAlign: 'center', lineHeight: 20, marginBottom: 14 },

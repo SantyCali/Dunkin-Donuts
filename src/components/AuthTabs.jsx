@@ -3,10 +3,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { Animated, Pressable, StyleSheet, Text, View } from "react-native";
 
 export default function AuthTabs({ active = "login", onSwitch }) {
-  // 0 = login, 1 = signup
   const targetIndex = active === "signup" ? 1 : 0;
   const anim = useRef(new Animated.Value(targetIndex)).current;
-  const [w, setW] = useState(0); // ancho del contenedor
+  const [w, setW] = useState(0);
   const PADDING = 4;
 
   useEffect(() => {
@@ -26,7 +25,7 @@ export default function AuthTabs({ active = "login", onSwitch }) {
 
   const handlePress = (to) => {
     if (to === active) return;
-    // animamos acá, y avisamos al padre cuando termina para que navegue
+
     Animated.timing(anim, {
       toValue: to === "signup" ? 1 : 0,
       duration: 220,
@@ -41,7 +40,7 @@ export default function AuthTabs({ active = "login", onSwitch }) {
       onLayout={(e) => setW(e.nativeEvent.layout.width)}
       style={styles.tabs}
     >
-      {/* pill naranja debajo del texto */}
+
       <Animated.View
         pointerEvents="none"
         style={[
@@ -84,7 +83,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 18,
-    zIndex: 1, // por encima de la pill
+    zIndex: 1, 
   },
   pill: {
     position: "absolute",
@@ -92,7 +91,7 @@ const styles = StyleSheet.create({
     top: 4,
     bottom: 4,
     borderRadius: 18,
-    backgroundColor: "#F36B1D", // naranja (podés reemplazar por tu colors.orange)
+    backgroundColor: "#F36B1D", 
     zIndex: 0,
   },
   tabText: { fontWeight: "700", fontSize: 14 },
